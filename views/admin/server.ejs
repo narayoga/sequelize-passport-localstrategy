@@ -1,0 +1,44 @@
+<html lang="en">
+<%- include("component/head")  %> 
+<style>
+  .dropdown-menu{
+    width: 25em !important;
+  }
+  .navbar-brand img{
+  width: 100px;
+  }
+</style>
+<body>
+  <%- include("component/navbar")%> 
+
+    <% let id = 1  %> 
+    <div class="container" style="margin-top: 20em;">
+      <h2 class="text-center" style="margin-bottom: 50px;">Server List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">no</th>
+            <th scope="col">location</th>
+            <th scope="col">capacity</th>
+            <th scope="col">option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% list.forEach(e => { %>
+          <tr>
+            <th scope="row"><%= id++ %> </th>
+            <td><%= e.name %></td>
+            <td><%= e.capacity %></td>
+            <td>
+              <a style="color: greenyellow;" class="text-decoration-none" href="/list/<%= e.name %>">status</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <script src="./list.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
+
