@@ -1,0 +1,48 @@
+<html lang="en">
+<%- include("component/head")  %> 
+<style>
+  .submit{
+    width: 135px;
+    height: 38px;
+    background-color: #fd7e14;
+  }
+  .container{
+    width: 600px;
+    padding: 25px 0;
+  }
+</style>
+<body>
+  <header class="header d-flex justify-content-around ">
+    <div id="logo"><a href="/"><img src="./images/logo.png" alt=""></a></div>
+    <div id="menu">
+        <ul class="d-flex justify-content-evenly">
+            <li class="list-unstyled"><a class="text-white text-decoration-none" href="#news">News</a></li>
+            <li class="list-unstyled"><a class="text-white text-decoration-none" href="#gameplay">Gameplay</a></li>
+            <li class="list-unstyled"><a class="text-white text-decoration-none" href="#system">Help</a></li>
+            <li class="list-unstyled"><a class="text-white text-decoration-none" href="#review">Review</a></li>
+        </ul>
+    </div>
+  </header> 
+  <div class="container">
+    <a href="/register"></a>                    <!-- apa ini -->
+  
+    <!-- add form -->
+    <form method="post" action="/register">
+      <div class="mb-3">
+        <label for="email" class="form-label ms-2">email</label>
+        <input class="form-control" id="email" name="email" type="text" required></input>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label ms-2">password</label>
+        <input class="form-control" id="password" name="password" type="password" required></input>
+      </div>
+      <div class="mb-3" >
+        <a class="btn-input text-white text-decoration-none" href="/">
+          <button type="submit" class="submit form-control mx-auto">submit</button>
+        </a>
+      </div>
+    </form>
+  </div>
+  <%- include("component/script")  %> 
+</body>
+</html>
