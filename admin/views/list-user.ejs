@@ -1,0 +1,80 @@
+<html lang="en">
+<%- include("component/head")  %> 
+<style>
+  .black{
+    background-color: rgb(46, 46, 46);
+  }
+  .gray{
+    background-color: rgb(79, 78, 78);
+  }
+  .card{
+    margin-top: 50px;
+  }
+  .card-block{
+    width: 80%;
+    height: fit-content;
+    /* border: 1px solid red; */
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  .fix{
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+  .span{
+    position: absolute;
+    top: 0;
+    left: 10px; 
+  }
+  .header{
+    border: 1px solid rgb(255, 189, 47);
+    margin-bottom: 15px;
+  }
+</style>
+  <body>  
+    <div class="container">
+      <h2>PLAYER DETAIL</h2>       
+        <div class="card black" style="width: 20rem; padding: 40px 0;">
+          <a class="span" href="/userlist">&laquo; back</a>
+          <div class="fix">
+            <a href="/<%= list.id%>/edit">edit</a>
+          </div>
+          <div class="inner black" style="width: 100%">
+            <div class="card-block mx-auto black">
+              
+              <div class="header">
+                <h3 class="text-uppercase text-center text-white"><%= list.biodata.username %></h3>
+                <h3 class="text-center text-white"><%= list.biodata.first_name %> <span><%= list.biodata.last_name %></span></h3>
+                <p class="text-center text-white fst-italic" style="margin-bottom: 0; padding-bottom: 16px;"><%= list.email %></p>
+              </div>
+
+              <p class="text-white">birth: <%= list.biodata.birthDate %></p>
+              <p class="text-white">phone: <%= list.biodata.phone %></p>
+             </div>
+
+             <div class="card-block mx-auto gray">
+               <ul class="text-center d-flex list-unstyled justify-content-evenly">
+                <li><p class="text-center text-success">win: <br> <%= list.history.win %> </p></li>
+                <li><p class="text-center text-danger">lose: <br> <%= list.history.lose %> </p></li>
+               </ul>
+              <h3 class="text-center" style="padding-bottom: 15px;">
+
+                <% if (list.guild.name) { %>
+                  <a href="/guild/<%=list.guild.name%> " class="text-white text-decoration-none">
+                    <%=list.guild.name%>
+                  </a>
+                <% } else { %>
+                <a href="" class="text-white text-decoration-none">non affiliation</a>
+                <% }  %> 
+
+              </h3>
+             </div>
+          </div>
+        </div>     
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
+
