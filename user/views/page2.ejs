@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+  </head>
+<script>
+  window.addEventListener('beforeunload', function (e) {
+    // Cancel the event
+    e.preventDefault();
+    // Chrome requires returnValue to be set
+    e.returnValue = '';
+  });
+</script>
+<style>
+  body{
+  width: 100%;
+  height: fit-content;
+  background-image: linear-gradient(45deg, linen, lightSteelBlue);
+}
+
+.invisible{
+  filter: opacity(0.1);
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+ul{
+  padding-left: 0px;
+}
+
+li{
+  list-style: none;
+  margin: 1vw 0;
+}
+
+.square{
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.1) 0px 18px 36px -18px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+  border-radius: 10px; 
+}
+
+@keyframes animateY{
+  0%, 100%{
+      transform: translateY(-40px);
+  }
+  50%{
+      transform: translateY(40px);
+  }
+}
+
+@keyframes animateY-2{
+  0%, 100%{
+      transform: translateY(40px);
+  }
+  50%{
+      transform: translateY(-40px);
+  }
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes reverse-rotate {
+  0%{
+    transform: rotate(90deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
+.img-bg{
+  background-color: rgba(214, 183, 181, 0.8) !important;
+}
+
+/* title */
+.one{
+  position: absolute;
+  right: 5em;
+  top: 3em;
+  z-index: -1;
+}
+
+.two{
+  position: absolute;
+  right:22em;
+  top: 10em;
+  z-index: -1;
+}
+
+.three{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 5em;
+  bottom: 25em;
+  z-index: 5;
+}
+
+.header h1{                  /*popover*/
+  position: absolute;
+}
+
+.title{
+  position: absolute;
+  top: 9vw;
+  left: 12vw;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: xx-large;
+}
+
+.inner1{
+  animation: animateY 5s linear infinite;
+
+}
+
+.inner2{
+  position: relative;
+  top: 30px;
+  animation: animateY-2 5s linear infinite;
+}
+
+.inner3{
+  position: relative;
+  top: 60px;
+  animation: animateY 3s linear infinite;
+}
+
+.hint{
+  position: absolute;
+  top: 10vw;
+  right: 12vw;
+}
+
+/* main */
+
+.main li{
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  background-color: rgba(214, 183, 181, 0.8);
+  padding-left: 20px;
+  width: 7vw;
+  height: 7vw;
+  animation: reverse-rotate .2s;
+  animation-fill-mode: both ;
+}
+
+.player li:hover{
+  background-color: rgba(214, 183, 181, 0.8 ) !important;
+  animation: rotate .2s;
+  animation-fill-mode: both;
+}
+
+.player li:active{
+  position:relative;
+	top:10px;
+}
+
+.com li{
+  transform: rotate(-90deg) scaleX(-1) !important;
+}
+
+.main li:nth-child(3){
+  padding-left: 28px;
+}
+
+.main img{
+  width: 5vw;
+  height: 5vw;
+  margin: 0.95vw 0;
+  /* border: 1px solid black; */
+  /* background-color: rgba(255, 45, 45, 0.5); */
+  /* border-radius: 50%; */
+}
+
+.img-container{
+  width: fit-content;
+  height: auto;
+  margin: 0 auto;
+  /* border: 1px solid rgb(255, 238, 0); */
+}
+
+.main{
+  width: 100%;
+  height: 62%;
+  margin-bottom: 1vw;
+  /* border: 1px solid magenta; */
+}
+
+.frame{
+  position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+
+  width: 50%;
+  height: 35em;
+  transform: translateY(2.2vw);
+  margin: auto auto;
+  display: flex;
+  justify-content: center;
+}
+
+.box{
+  width: 12vw;
+  height: 25vw;
+  margin: auto 5em;
+}
+
+.result{
+  width: 4em;
+  height: 4em;
+  background-color: rgba(107, 107, 107, 0.5);
+  margin: auto 0;
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.result:hover{
+  cursor: pointer;
+  background-color: rgba(107, 107, 107, 0.5);
+}
+
+.result:active{
+  position: relative;
+  top: 10px;
+}
+
+.score-table{
+  display: flex;
+  width: 100%;
+  height: 25em;
+  padding: 15px;
+  /* border: 1px solid greenyellow; */
+}
+
+.player-table{
+  padding: .5em;
+  margin: 0 auto;
+  width: 22%;
+  /* height: 100px; */
+  /* border: 1px solid red; */
+}
+
+.card{
+  padding: 20px 5px;
+  background-color: rgb(212, 189, 189) ;
+  /* border: 1px solid blueviolet; */
+  margin: 0 auto;
+  width: 65%;
+  height: fit-content;
+  backdrop-filter: blur(15px);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.ref-table{
+  padding: .5em;
+  margin: 75px 120px 0 120px;
+  width: 35%;
+  height: 100px;
+  /* border: 1px solid rgb(38, 27, 245); */
+}
+
+.slide-bar{
+  width: 75%;
+}
+
+.slider{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width:100% ;
+  height: 20px;
+  opacity: .75;
+  background: linear-gradient(90deg, rgb(214, 214, 214) 50%, rgb(214, 214, 214) 50%);
+  outline: none;
+  border-radius: 7px;
+  box-shadow: 0px 5px 8px 5px rgba(0,0,0,0.3);
+}
+
+.slider:hover{
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  background: white;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  background: white;
+  cursor: pointer;
+}
+
+.absolute{
+  position: absolute;
+}
+.fixed{
+  left: 250%;
+  bottom: 25%;
+}
+.form-width{
+  width: 50% !important;
+  margin: 0 auto;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.transparant{
+  opacity: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+</style>
+<body>
+  <section class="header">
+    <div class="title">
+      <div class="inner1">
+        PAPPER
+      </div>
+      <div class="inner2">
+        ROCK
+      </div>
+      <div class="inner3">
+        SCISSOR
+      </div>
+    </div>
+  </section>
+  <section class="main">
+    <div class="frame">
+      <div class="box player">
+        <div class="img-container">
+          <ul>
+            <li ><a href="#img1"><img src="../images/scissor.png" alt=""></a></li>
+            <li ><a href="#img2"><img src="../images/rock.png" alt=""></a></li>
+            <li ><a href="#img3"><img src="../images/papper.png" alt=""></a></li>
+          </ul>
+        </div>
+      </div>
+      <div onclick="refresh()" onmouseover="reset()" onmouseout="antiReset()" class="result"> </div> 
+      <div class="box com">
+        <div class="img-container">
+          <ul>
+            <li class="invisible"><img src="./images/scissor.png" alt=""></li>
+            <li><img src="./images/scissor.png" alt=""></li>
+            <li class="invisible"><img src="./images/scissor.png" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="square one"></div>
+  <div class="square two"></div>
+  <div class="square three"></div>
+
+  <div class="score-table">
+    <div class="player-table transparant">
+      <div class="card">
+        <h3 class="text-white">name</h3>
+        <form method="post" action="">
+          <div class="d-flex justify-content-evenly">
+            <div class="mb-3 text-center">
+              <label for="winplayer" class="form-label">win</label>
+              <input value="0" class="form-control form-width" id="winplayer" name="winplayer" type="number" disabled>
+            </div>
+            <div class="mb-3 text-center">
+              <label for="loseplayer" class="form-label ms-2">lose</label>
+              <input value="0" class="form-control form-width" id="loseplayer" name="loseplayer" type="number" disabled>
+            </div>
+          </div>
+          <div class="absolute fixed">
+            <a class="btn-input text-white text-decoration-none" href="">
+              <button type="submit" class="btn btn-primary login form-control">submit</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="ref-table">
+      <div class="card">
+        <form method="post" action="/page2/<%=data.id%>">
+          <div class="d-flex justify-content-evenly">
+            <div class="mb-3 text-center">
+              <label for="win" class="form-label">win</label>
+              <input value="<%= data.history.win%>" class="form-control form-width" id="win" name="win" type="number" readonly>
+            </div>
+            <div class="mb-3 text-center">
+              <label for="lose" class="form-label ms-2">lose</label>
+              <input value="<%= data.history.lose%>" class="form-control form-width" id="lose" name="lose" type="number" readonly>
+            </div>
+          </div>
+          <h5 class="text-white text-center text-uppercase" style="margin: 15px 0;"><%= data.biodata.username %> </h5>
+          <div class="container" style="width: 100px;">
+              <button type="submit" class="btn btn-primary login form-control">submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="player-table transparant">
+      <div class="card">
+        <h3 class="text-white">COMPUTER</h3>
+        <p class="fst-italic " style="color: rgb(253, 195, 4);">non-affiliation</p>
+        <form method="post" action="/page2">
+          <div class="d-flex justify-content-evenly">
+            <div class="mb-3 text-center">
+              <label for="win" class="form-label">win</label>
+              <input class="form-control form-width" id="win" name="win" type="number" disabled>
+            </div>
+            <div class="mb-3 text-center">
+              <label for="lose" class="form-label ms-2">lose</label>
+              <input class="form-control form-width" id="lose" name="lose" type="number" disabled>
+            </div>
+          </div>
+          <!-- <div class="absolute fixed">
+            <a class="btn-input text-white text-decoration-none" href="">
+              <button type="submit" class="btn btn-primary login form-control">submit</button>
+            </a>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- <script src="./js/main.js"></script> -->
+  <script>
+      //for loop. input css property
+const playerBackground = document.querySelectorAll('.player li')
+arrBg = Array.from(playerBackground);
+
+for(let i = 0; i < arrBg.length; i++){
+  arrBg[i].style.backgroundColor = 'transparent';
+}
+
+// computer random choice
+function getCom (){
+  let com = Math.random()
+
+  if(com < 0.3){
+    return "rock"
+  } else if (com >= 0.3 && com <0.6){
+    return "paper"
+  } else{
+    return  "scissor"
+  }
+}
+
+
+// game's rules
+
+const rules = (player, computer)=> {
+  function winIncrement() {
+    document.getElementById('win').stepUp();
+    console.log('active');
+  }
+  
+  function loseIncrement() {
+    document.getElementById('lose').stepUp();
+    console.log('active');
+  }
+  if(player == computer){
+    return "DRAW"
+  } else if(player == "rock"){
+    if(computer == "scissor"){
+      winIncrement()
+      return "WIN";
+    }else {
+      loseIncrement()
+      return "LOSE"
+    }
+  } else if(player == "paper"){
+    if(computer == "rock"){
+      winIncrement()
+      return "WIN"
+    }else {
+      loseIncrement()
+      return "LOSE"
+    }
+  } else if(player == "scissor"){
+    if(computer == "paper"){
+      winIncrement()
+      return "WIN"
+    }else {
+      loseIncrement()
+      return "LOSE"
+    }
+  }
+}
+
+// get the element
+const getScissor = document.querySelector('.player .img-container li:nth-child(1)')
+const getRock = document.querySelector('.player .img-container li:nth-child(2)')
+const getPaper = document.querySelector('.player .img-container li:nth-child(3)')
+const result = document.querySelector('.result')
+const comImg = document.querySelector('.com .img-container li:nth-child(2) img')
+
+// event for rock 
+const rock = ()=>{
+  const A_CCOMPUTER = getCom();
+  const A_PLAYER = 'rock';
+  const RESULT = rules(A_CCOMPUTER, A_PLAYER)
+
+  result.innerHTML = RESULT;
+
+  if(RESULT == 'WIN'){
+    comImg.src = '../images/scissor.png'
+    result.style.backgroundColor = "rgba(185, 250, 6, 0.5)";
+  } else if(RESULT == 'LOSE'){
+    comImg.src = '../images/papper.png'
+    result.style.backgroundColor = "rgba(255, 38, 0, 0.549)";
+  } else{
+    comImg.src = '../images/rock.png'
+  }
+  getRock.className = 'img-bg';
+
+  getScissor.removeEventListener('click', scissor)
+  getRock.removeEventListener('click', rock)
+  getPaper.removeEventListener('click', paper)
+  result.addEventListener('click', refresh)
+
+  stop()
+}
+
+getRock.addEventListener('click', rock)
+
+// event for paper
+const paper = ()=>{
+  const A_CCOMPUTER = getCom();
+  const A_PLAYER = 'paper';
+  const RESULT = rules(A_CCOMPUTER, A_PLAYER)
+
+  result.innerHTML = RESULT;
+
+  if(RESULT == 'WIN'){
+    comImg.src = '../images/rock.png'
+    result.style.backgroundColor = "rgba(185, 250, 6, 0.5)";
+  } else if(RESULT == 'LOSE'){
+    comImg.src = '../images/scissor.png'
+    result.style.backgroundColor = "rgba(255, 38, 0, 0.549)";
+  } else{
+    comImg.src = '../images/papper.png'
+  }
+  getPaper.className = 'img-bg';
+
+  getScissor.removeEventListener('click', scissor)
+  getRock.removeEventListener('click', rock)
+  getPaper.removeEventListener('click', paper)
+  result.addEventListener('click', refresh)
+
+  stop()
+}
+
+getPaper.addEventListener('click', paper)
+
+// event for scissor
+const scissor = ()=>{
+  const A_CCOMPUTER = getCom();
+  const A_PLAYER = 'scissor';
+  const RESULT = rules(A_CCOMPUTER, A_PLAYER) 
+
+  result.innerHTML = RESULT;
+
+  if(RESULT == 'WIN'){
+    comImg.src = '../images/papper.png'
+    result.style.backgroundColor = "rgba(185, 250, 6, 0.5)";
+  } else if(RESULT == 'LOSE'){
+    comImg.src = '../images/rock.png'
+    result.style.backgroundColor = "rgba(255, 38, 0, 0.549)";
+  } else{
+    comImg.src = '../images/scissor.png'
+  }
+  getScissor.className = 'img-bg';
+
+  getScissor.removeEventListener('click', scissor)
+  getRock.removeEventListener('click', rock)
+  getPaper.removeEventListener('click', paper)
+  result.addEventListener('click', refresh)
+
+  stop()
+}
+
+getScissor.addEventListener('click', scissor);
+
+// scrabble the computer image
+let IMAGE_TRACKER = 'scissor';
+
+function changeImg(){
+  if(IMAGE_TRACKER == 'scissor'){
+    comImg.src = '../images/scissor.png';
+    IMAGE_TRACKER = 'rock';
+  } else if(IMAGE_TRACKER == 'rock'){
+    comImg.src = '../images/rock.png';
+    IMAGE_TRACKER = 'paper';
+  } else{
+    comImg.src = '../images/papper.png';
+    IMAGE_TRACKER = 'scissor';
+  }
+}
+
+let timer = setInterval('changeImg()', 100);
+
+function stop(){
+  clearInterval(timer)
+}
+
+// show modal without trigger
+$(window).on('load', function(){
+    $('#exampleModal').modal('show');
+});
+
+//popover bootstrap
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+
+//refresh function
+const reset = ()=>{
+  let result = document.querySelector('.result');
+  result.innerText = "refresh";
+  result.style.fontWeight = 'lighter';
+}
+
+const antiReset = ()=>{
+  let result = document.querySelector('.result')
+  result.innerText = ' ';
+  result.style.fontWeight = 'bold';
+}
+
+const refresh = ()=>{
+  result.innerText = ' ';
+  result.style.backgroundColor = "rgba(107, 107, 107, 0.5)";
+
+  getScissor.classList.remove('img-bg');
+  getPaper.classList.remove('img-bg');
+  getRock.classList.remove('img-bg');
+
+  timer = setInterval('changeImg()', 100);
+
+  getPaper.addEventListener('click', paper);
+  getScissor.addEventListener('click', scissor);
+  getRock.addEventListener('click', rock);
+
+  result.removeEventListener('click', refresh)
+}
+
+//slider function
+const slider = document.getElementById("range");
+
+slider.addEventListener("mousemove", () => {
+  let value = slider.value;
+  let color = 'linear-gradient(90deg, rgb(117, 252, 117)' + value + '%, rgb(214,214,214)'+ value + '%)';
+  slider.style.background = color;
+})
+
+window.addEventListener('beforeunload', function (e) {
+  // Cancel the event
+  e.preventDefault();
+  // Chrome requires returnValue to be set
+  e.returnValue = '';
+});
+  </script>
+</body>
+</html>
