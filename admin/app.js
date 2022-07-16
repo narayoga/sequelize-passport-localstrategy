@@ -32,12 +32,8 @@ app.set('view engine', 'ejs');
 
 //router
 app.use('/', adminRouter)
-
-app.get('/blank', (req,res,next) => {
-  res.render('blank', {
-    title: 'not logged in',
-    css: './css/none.css'
-  })
+app.use('/test', (req,res) => {
+  res.send('tets')
 })
 
 // catch 404 and forward to error handler

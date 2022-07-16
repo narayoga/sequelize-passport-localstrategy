@@ -1,12 +1,19 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('../lib/passport');
-const auth = require('../controllers/authController')
+const restrict = require('../middleware/restrict')
 const {player, guild, biodata, server} = require('../models');
 
 router.get('/', (req, res, next) => {
   res.render('index', { 
     title: 'admin',
+    css: './css/none.css'
+  });
+});
+
+router.get('/authorization', (req, res, next) => {
+  res.render('blank', { 
+    title: 'login first',
     css: './css/none.css'
   });
 });
@@ -18,7 +25,13 @@ router.get('/login', (req, res, next) => {
   });
 });
 
-router.get('/server', (req, res, next) => {
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/authorization',
+  failureFlash: true
+}));
+
+router.get('/server', restrict, (req, res, next) => {
   server.findAll()
   .then(result => {
     // res.send(result)
@@ -33,7 +46,7 @@ router.get('/server', (req, res, next) => {
   })
 });
 
-router.get('/guild', (req, res, next) => {
+router.get('/guild', restrict, (req, res, next) => {
   guild.findAll()
   .then(result => {
     // res.send(result)
@@ -48,7 +61,7 @@ router.get('/guild', (req, res, next) => {
   })
 });
 
-router.get('guild/:name', (req,res) =>{ 
+router.get('guild/:name', restrict, (req,res) =>{ 
   const name = (req.params.name)    
   guild.findOne({
     where:{name},
@@ -65,7 +78,7 @@ router.get('guild/:name', (req,res) =>{
   })
 })
 
-router.get('/userlist', (req,res) => {
+router.get('/userlist', restrict, (req,res) => {
   player.findAll()
   .then(result => {
     res.render('list', {
@@ -79,7 +92,7 @@ router.get('/userlist', (req,res) => {
   })
 })
 
-router.get('/delete/:id', (req,res) => {
+router.get('/delete/:id', restrict, (req,res) => {
   player.findAll()
   .then(result => {
     player.destroy({
@@ -91,7 +104,7 @@ router.get('/delete/:id', (req,res) => {
   res.redirect('/userlist')
 })
 
-router.get('/:id', (req,res) =>{ 
+router.get('/:id', restrict, (req,res) =>{ 
   const id = (req.params.id)    
   player.findOne({
     include:{all: true},
@@ -109,7 +122,7 @@ router.get('/:id', (req,res) =>{
   })
 })
 
-router.get('/:id/edit', (req,res) =>{ //kalo endpoint NAME params harus NAME
+router.get('/:id/edit', restrict, (req,res) =>{ //kalo endpoint NAME params harus NAME
   const id = (req.params.id)    //kalo ID params harus ID
   player.findOne({
     include:{all: true},
@@ -127,7 +140,7 @@ router.get('/:id/edit', (req,res) =>{ //kalo endpoint NAME params harus NAME
   })
 })
 
-router.post('/update/:id', (req,res) => { 
+router.post('/update/:id', restrict, (req,res) => { 
   const id = (req.params.id)
   let {username, email, password, first_name, last_name, birthDate, phone} = req.body;
 

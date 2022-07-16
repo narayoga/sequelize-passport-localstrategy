@@ -1,10 +1,10 @@
 const passport = require('passport')
 const localStrategy = require('passport-local').Strategy
-const {player} = require('../models')
+const {admin} = require('../models')
 
-async function authenticate(email, password, done) {
+async function authenticate(username, password, done) {
   try {
-    const data = await player.authenticate({email, password})
+    const data = await admin.authenticate({username, password})
     return done(null, data)
   } 
   catch (err) {
@@ -13,7 +13,7 @@ async function authenticate(email, password, done) {
 }
 
 passport.use (
-  new localStrategy({usernameField:'email', passwordField:'password'}, authenticate)
+  new localStrategy({usernameField:'username', passwordField:'password'}, authenticate)
 )
 
 passport.serializeUser((user, done) => {
@@ -21,7 +21,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser(async (id,done) => {
-  done(null, await player.findByPk(id))
+  done(null, await admin.findByPk(id))
 })
 
 module.exports = passport;
